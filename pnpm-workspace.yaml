@@ -12,8 +12,8 @@ overrides:
   "json-refs>js-yaml": "^3.15.0"
   # CVE-2026-33750: Fix security vulnerability in brace-expansion
   # Overriding transitive dependency until minimatch updates to patched brace-expansion version
-  "minimatch@^3>brace-expansion": "1.1.13"
-  "minimatch@^5>brace-expansion": "^2.0.3"
+  "minimatch@^3>brace-expansion": "1.1.16"
+  "minimatch@^5>brace-expansion": "2.1.2"
   "openapi-types": "7.2.3"
   # CVE-2026-8723: Fix TypeError in qs.stringify (comma arrayFormat + encodeValuesOnly with null/undefined)
   # Overriding transitive dependency until @cypress/request updates to patched qs version
@@ -39,3 +39,7 @@ overrides:
   # CVE-2026-33671 (High) / CVE-2026-33672 (Medium): picomatch POSIX bracket method injection and ReDoS.
   "picomatch@3": "3.0.2"
   "picomatch@4": "4.0.4"
+  # CVE fix: form-data <4.0.6 — @cypress/request pins ~4.0.4 (tilde), which caps at 4.0.5.
+  # All other dependents (axios, superagent, @vscode/vsce, jsdom, @types/node-fetch) use ^4.x
+  # which naturally resolves to 4.0.6, so only @cypress/request needs a targeted override.
+  "@cypress/request>form-data": "4.0.6"
